@@ -9,6 +9,8 @@ This skill helps with Honor of Kings hero selection, lane filling, matchup reaso
 
 中文优先：用户通常会用中文描述阵容、分路、英雄池和战绩。回答时默认用简洁中文。
 
+The default data uses Chinese hero names for the mainland 王者荣耀 context. Do not translate hero names unless the user explicitly maintains an English alias mapping.
+
 ## When to use
 
 Use this skill when the user asks things like:

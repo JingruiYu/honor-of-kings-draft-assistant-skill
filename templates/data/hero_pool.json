@@ -1,7 +1,7 @@
 {
   "game": "Honor of Kings",
   "updated_at": "replace-me",
-  "source": "public template; replace with your own hero pool and match history",
+  "source": "public neutral template; replace with your own hero pool and match history",
   "lane_preferences": [
     "中路",
     "游走",
@@ -13,59 +13,28 @@
     "甄姬",
     "张良",
     "王昭君",
-    "米莱狄",
-    "高渐离",
-    "海月",
-    "沈梦溪",
-    "周瑜",
     "后羿",
-    "莱西奥",
-    "李元芳",
-    "狄仁杰",
-    "虞姬",
-    "伽罗",
-    "鲁班七号",
-    "蒙犽",
-    "戈娅",
     "孙策",
-    "铠",
-    "亚瑟",
-    "廉颇",
-    "吕布",
-    "亚连",
-    "姬小满",
-    "项羽",
-    "庄周",
-    "盾山",
-    "蔡文姬",
-    "瑶",
-    "孙膑",
-    "牛魔",
-    "东皇太一",
-    "朵莉亚",
-    "典韦",
-    "兰陵王",
-    "孙悟空",
-    "云缨",
-    "阿轲"
+    "牛魔"
   ],
   "match_statistics": [
     {
-      "hero": "甄姬",
-      "appearances": 10,
-      "win_rate_percent": 60.0,
+      "hero": "示例英雄",
+      "appearances": 0,
+      "win_rate_percent": null,
       "preferred_lanes": [
-        "中路"
+        "示例分路"
       ],
-      "confidence": "example",
+      "confidence": "template-placeholder",
       "notes": [
-        "Example record. Replace or delete it when using your own data."
+        "Placeholder record for schema demonstration only. Replace or delete it before real use."
       ]
     }
   ],
   "ambiguous_records": [],
   "normalization_notes": [
     "This file is generated from templates/data/hero_pool.json.",
+    "The template intentionally uses neutral placeholder values rather than personal match history.",
     "Do not commit personal match history if the repository is public."
   ]
 }
