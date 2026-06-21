@@ -1,0 +1,43 @@
+{
+  "updated_at": "2026-06-19",
+  "search_status": {
+    "web_search": "timeout",
+    "xiaohongshu_search": "mcp_connection_failed",
+    "zhihu_search": "ok_snippets_only",
+    "note": "Historical bootstrap status; not required for runtime."
+  },
+  "sources": [
+    {
+      "source": "知乎搜索结果片段",
+      "title": "王者荣耀全英雄核心克制关系实战干货详解",
+      "url": "https://api.zhihu.com/articles/2050798121194614790",
+      "usable_observation": "克制关系核心是机制压制而非单纯数值；高机动英雄的克制逻辑核心是锁机动性。",
+      "confidence": "snippet_only"
+    },
+    {
+      "source": "知乎搜索结果片段",
+      "title": "当前版本强势英雄出装铭文干货深度解析",
+      "url": "https://api.zhihu.com/articles/2050783514266751876",
+      "usable_observation": "强势英雄出装应围绕英雄核心机制定制，不应机械套固定模板。",
+      "confidence": "snippet_only"
+    },
+    {
+      "source": "知乎搜索结果片段",
+      "title": "王者荣耀当前版本各位置高胜率铭文搭配解析",
+      "url": "https://api.zhihu.com/articles/2049749185386354473",
+      "usable_observation": "法师铭文核心框架相对稳定，蓝色铭文按英雄机制调整。",
+      "confidence": "snippet_only"
+    },
+    {
+      "source": "知乎搜索结果片段",
+      "title": "S43赛季王者荣耀中路核心克制关系整理",
+      "url": "https://api.zhihu.com/articles/2050756666623316852",
+      "usable_observation": "中路克制主要来自机制属性互相针对，刺客转中是热门分支之一。",
+      "confidence": "snippet_only"
+    }
+  ],
+  "notes": [
+    "This is a public starter configuration converted from a local MVP. It is not an official live tier list.",
+    "Users should update meta.json, builds.json, and matchups.json with current patch notes, community tier lists, screenshots, and personal feedback."
+  ]
+}

@@ -1,0 +1,580 @@
+{
+  "updated_at": "2026-06-19",
+  "version_label": "当前版本预置 MVP（搜索片段 + 机制常识，待用户截图/榜单校准）",
+  "score_scale": "1-10，越高越适合作为默认推荐；situational 表示吃阵容。",
+  "heroes": {
+    "甄姬": {
+      "lanes": [
+        "中路"
+      ],
+      "meta_score": 8.2,
+      "tier": "A",
+      "tags": [
+        "团控",
+        "消耗",
+        "守线",
+        "反冲阵",
+        "法伤"
+      ],
+      "difficulty": "低",
+      "situational": false
+    },
+    "张良": {
+      "lanes": [
+        "中路"
+      ],
+      "meta_score": 8.0,
+      "tier": "A",
+      "tags": [
+        "稳定控制",
+        "压制",
+        "反刺客",
+        "工具人",
+        "法伤"
+      ],
+      "difficulty": "低",
+      "situational": false
+    },
+    "王昭君": {
+      "lanes": [
+        "中路"
+      ],
+      "meta_score": 7.8,
+      "tier": "A-",
+      "tags": [
+        "团控",
+        "分割战场",
+        "守线",
+        "反冲阵",
+        "法伤"
+      ],
+      "difficulty": "中",
+      "situational": false
+    },
+    "米莱狄": {
+      "lanes": [
+        "中路"
+      ],
+      "meta_score": 6.8,
+      "tier": "B+",
+      "tags": [
+        "推进",
+        "磨塔",
+        "线权",
+        "法伤"
+      ],
+      "difficulty": "低",
+      "situational": true
+    },
+    "高渐离": {
+      "lanes": [
+        "中路"
+      ],
+      "meta_score": 7.0,
+      "tier": "B+",
+      "tags": [
+        "进场",
+        "爆发",
+        "团战",
+        "法伤"
+      ],
+      "difficulty": "中",
+      "situational": true
+    },
+    "海月": {
+      "lanes": [
+        "中路"
+      ],
+      "meta_score": 7.3,
+      "tier": "B+",
+      "tags": [
+        "单点压制",
+        "隔离核心",
+        "法伤"
+      ],
+      "difficulty": "中",
+      "situational": true
+    },
+    "沈梦溪": {
+      "lanes": [
+        "中路"
+      ],
+      "meta_score": 7.4,
+      "tier": "B+",
+      "tags": [
+        "消耗",
+        "支援",
+        "远程压血",
+        "法伤"
+      ],
+      "difficulty": "中",
+      "situational": false
+    },
+    "周瑜": {
+      "lanes": [
+        "中路"
+      ],
+      "meta_score": 7.0,
+      "tier": "B+",
+      "tags": [
+        "阵地战",
+        "推进",
+        "持续法伤",
+        "守线"
+      ],
+      "difficulty": "中",
+      "situational": true
+    },
+    "后羿": {
+      "lanes": [
+        "发育路"
+      ],
+      "meta_score": 7.2,
+      "tier": "B+",
+      "tags": [
+        "持续物伤",
+        "后期核心",
+        "开团箭",
+        "站桩射手"
+      ],
+      "difficulty": "低",
+      "situational": true
+    },
+    "莱西奥": {
+      "lanes": [
+        "发育路"
+      ],
+      "meta_score": 7.0,
+      "tier": "B+",
+      "tags": [
+        "物伤",
+        "团战输出",
+        "位移"
+      ],
+      "difficulty": "中",
+      "situational": false
+    },
+    "李元芳": {
+      "lanes": [
+        "发育路",
+        "打野"
+      ],
+      "meta_score": 6.9,
+      "tier": "B",
+      "tags": [
+        "物伤",
+        "节奏",
+        "推塔",
+        "打龙"
+      ],
+      "difficulty": "中",
+      "situational": true
+    },
+    "狄仁杰": {
+      "lanes": [
+        "发育路"
+      ],
+      "meta_score": 7.6,
+      "tier": "A-",
+      "tags": [
+        "物伤",
+        "自保",
+        "解控",
+        "持续输出"
+      ],
+      "difficulty": "中",
+      "situational": false
+    },
+    "虞姬": {
+      "lanes": [
+        "发育路"
+      ],
+      "meta_score": 7.5,
+      "tier": "A-",
+      "tags": [
+        "物伤",
+        "反刺客",
+        "自保",
+        "免物伤"
+      ],
+      "difficulty": "中",
+      "situational": true
+    },
+    "伽罗": {
+      "lanes": [
+        "发育路"
+      ],
+      "meta_score": 7.0,
+      "tier": "B+",
+      "tags": [
+        "长手",
+        "后期核心",
+        "持续物伤"
+      ],
+      "difficulty": "中",
+      "situational": true
+    },
+    "鲁班七号": {
+      "lanes": [
+        "发育路"
+      ],
+      "meta_score": 6.9,
+      "tier": "B",
+      "tags": [
+        "高输出",
+        "站桩射手",
+        "后期核心"
+      ],
+      "difficulty": "低",
+      "situational": true
+    },
+    "蒙犽": {
+      "lanes": [
+        "发育路"
+      ],
+      "meta_score": 7.2,
+      "tier": "B+",
+      "tags": [
+        "持续物伤",
+        "压线",
+        "团战"
+      ],
+      "difficulty": "中",
+      "situational": false
+    },
+    "戈娅": {
+      "lanes": [
+        "发育路"
+      ],
+      "meta_score": 7.4,
+      "tier": "B+",
+      "tags": [
+        "机动",
+        "拉扯",
+        "物伤"
+      ],
+      "difficulty": "高",
+      "situational": false
+    },
+    "孙策": {
+      "lanes": [
+        "对抗路"
+      ],
+      "meta_score": 7.8,
+      "tier": "A-",
+      "tags": [
+        "开团",
+        "支援",
+        "切后",
+        "物伤",
+        "控制"
+      ],
+      "difficulty": "中",
+      "situational": false
+    },
+    "铠": {
+      "lanes": [
+        "对抗路",
+        "打野"
+      ],
+      "meta_score": 7.0,
+      "tier": "B+",
+      "tags": [
+        "单挑",
+        "切后",
+        "物伤",
+        "半肉"
+      ],
+      "difficulty": "低",
+      "situational": true
+    },
+    "亚瑟": {
+      "lanes": [
+        "对抗路"
+      ],
+      "meta_score": 6.6,
+      "tier": "B",
+      "tags": [
+        "沉默",
+        "抗压",
+        "半肉",
+        "物伤"
+      ],
+      "difficulty": "低",
+      "situational": true
+    },
+    "廉颇": {
+      "lanes": [
+        "对抗路",
+        "游走"
+      ],
+      "meta_score": 7.7,
+      "tier": "A-",
+      "tags": [
+        "前排",
+        "开团",
+        "控制",
+        "霸体"
+      ],
+      "difficulty": "中",
+      "situational": false
+    },
+    "吕布": {
+      "lanes": [
+        "对抗路"
+      ],
+      "meta_score": 7.2,
+      "tier": "B+",
+      "tags": [
+        "真伤",
+        "前排",
+        "团战",
+        "大招开团"
+      ],
+      "difficulty": "中",
+      "situational": true
+    },
+    "亚连": {
+      "lanes": [
+        "对抗路"
+      ],
+      "meta_score": 8.0,
+      "tier": "A",
+      "tags": [
+        "切后",
+        "单挑",
+        "持续输出",
+        "混伤"
+      ],
+      "difficulty": "中",
+      "situational": false
+    },
+    "姬小满": {
+      "lanes": [
+        "对抗路"
+      ],
+      "meta_score": 7.8,
+      "tier": "A-",
+      "tags": [
+        "机动",
+        "切后",
+        "控制",
+        "操作"
+      ],
+      "difficulty": "高",
+      "situational": false
+    },
+    "项羽": {
+      "lanes": [
+        "对抗路",
+        "游走"
+      ],
+      "meta_score": 7.2,
+      "tier": "B+",
+      "tags": [
+        "前排",
+        "控制",
+        "反推",
+        "坦度"
+      ],
+      "difficulty": "低",
+      "situational": true
+    },
+    "庄周": {
+      "lanes": [
+        "游走"
+      ],
+      "meta_score": 7.6,
+      "tier": "A-",
+      "tags": [
+        "解控",
+        "反控制",
+        "保护",
+        "坦度"
+      ],
+      "difficulty": "低",
+      "situational": true
+    },
+    "盾山": {
+      "lanes": [
+        "游走"
+      ],
+      "meta_score": 7.4,
+      "tier": "B+",
+      "tags": [
+        "挡飞行物",
+        "开团",
+        "修塔",
+        "保护"
+      ],
+      "difficulty": "高",
+      "situational": true
+    },
+    "蔡文姬": {
+      "lanes": [
+        "游走"
+      ],
+      "meta_score": 7.0,
+      "tier": "B+",
+      "tags": [
+        "回血",
+        "保护",
+        "续航",
+        "软辅"
+      ],
+      "difficulty": "低",
+      "situational": true
+    },
+    "瑶": {
+      "lanes": [
+        "游走"
+      ],
+      "meta_score": 7.0,
+      "tier": "B+",
+      "tags": [
+        "保护",
+        "跟核",
+        "视野",
+        "软辅"
+      ],
+      "difficulty": "低",
+      "situational": true
+    },
+    "孙膑": {
+      "lanes": [
+        "游走"
+      ],
+      "meta_score": 7.8,
+      "tier": "A-",
+      "tags": [
+        "拉扯",
+        "加速",
+        "抬血",
+        "转线"
+      ],
+      "difficulty": "中",
+      "situational": false
+    },
+    "牛魔": {
+      "lanes": [
+        "游走"
+      ],
+      "meta_score": 7.7,
+      "tier": "A-",
+      "tags": [
+        "前排",
+        "开团",
+        "控制",
+        "保护"
+      ],
+      "difficulty": "中",
+      "situational": false
+    },
+    "东皇太一": {
+      "lanes": [
+        "游走"
+      ],
+      "meta_score": 7.5,
+      "tier": "A-",
+      "tags": [
+        "压制",
+        "反刺客",
+        "开团",
+        "前期入侵"
+      ],
+      "difficulty": "中",
+      "situational": true
+    },
+    "朵莉亚": {
+      "lanes": [
+        "游走"
+      ],
+      "meta_score": 7.5,
+      "tier": "A-",
+      "tags": [
+        "刷新大招",
+        "保护",
+        "体系辅"
+      ],
+      "difficulty": "中",
+      "situational": true
+    },
+    "典韦": {
+      "lanes": [
+        "打野"
+      ],
+      "meta_score": 7.0,
+      "tier": "B+",
+      "tags": [
+        "收割",
+        "真伤",
+        "近战",
+        "滚雪球"
+      ],
+      "difficulty": "低",
+      "situational": true
+    },
+    "兰陵王": {
+      "lanes": [
+        "打野",
+        "游走"
+      ],
+      "meta_score": 7.2,
+      "tier": "B+",
+      "tags": [
+        "隐身",
+        "切后",
+        "前期节奏",
+        "物伤"
+      ],
+      "difficulty": "中",
+      "situational": true
+    },
+    "孙悟空": {
+      "lanes": [
+        "打野"
+      ],
+      "meta_score": 6.8,
+      "tier": "B",
+      "tags": [
+        "爆发",
+        "切后",
+        "发育型",
+        "物伤"
+      ],
+      "difficulty": "中",
+      "situational": true
+    },
+    "云缨": {
+      "lanes": [
+        "打野",
+        "对抗路"
+      ],
+      "meta_score": 7.3,
+      "tier": "B+",
+      "tags": [
+        "战士打野",
+        "控制",
+        "持续输出",
+        "物伤"
+      ],
+      "difficulty": "中",
+      "situational": false
+    },
+    "阿轲": {
+      "lanes": [
+        "打野"
+      ],
+      "meta_score": 6.8,
+      "tier": "B",
+      "tags": [
+        "收割",
+        "隐身",
+        "切后",
+        "物伤"
+      ],
+      "difficulty": "高",
+      "situational": true
+    }
+  }
+}

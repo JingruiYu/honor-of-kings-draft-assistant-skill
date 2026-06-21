@@ -3,17 +3,22 @@
 
 The script keeps the original MVP rule-based logic: lane filtering, personal
 hero-pool scoring, version/meta score, matchup tag bonus, and build lookup.
-User data is stored in a generated local data directory.
+
+Runtime data is read from a local data directory. Public starter configuration
+lives under templates/data and can be copied with --init-data. Personal match
+history should stay in the generated local data directory, not in Git.
 """
 from __future__ import annotations
 
 import argparse
 import json
 import os
+import shutil
 from pathlib import Path
 from typing import Any
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+TEMPLATE_DATA_ROOT = REPOSITORY_ROOT / "templates" / "data"
 DATA_ROOT = Path(os.environ.get("HOK_ASSISTANT_DATA_DIR", REPOSITORY_ROOT / "data"))
 
 LANE_ALIASES = {
@@ -33,154 +38,43 @@ LANE_ALIASES = {
     "野": "打野",
 }
 
-DEFAULT_JSON_FILES: dict[str, dict[str, Any]] = {
-    "hero_pool.json": {
-        "game": "Honor of Kings",
-        "updated_at": "replace-me",
-        "source": "local user input",
-        "lane_preferences": ["中路", "游走", "对抗路", "发育路"],
-        "owned_heroes": ["甄姬", "张良", "王昭君", "后羿", "庄周"],
-        "match_statistics": [
-            {
-                "hero": "甄姬",
-                "appearances": 10,
-                "win_rate_percent": 60.0,
-                "preferred_lanes": ["中路"],
-                "confidence": "example",
-            }
-        ],
-    },
-    "meta.json": {
-        "updated_at": "replace-me",
-        "version_label": "local configurable meta data",
-        "score_scale": "1-10, higher means stronger default recommendation",
-        "heroes": {
-            "甄姬": {
-                "lanes": ["中路"],
-                "meta_score": 8.0,
-                "tier": "A",
-                "tags": ["团控", "守线", "反冲阵", "法伤"],
-                "difficulty": "低",
-                "situational": False,
-            },
-            "张良": {
-                "lanes": ["中路"],
-                "meta_score": 8.0,
-                "tier": "A",
-                "tags": ["压制", "反刺客", "工具人", "法伤"],
-                "difficulty": "低",
-                "situational": False,
-            },
-            "王昭君": {
-                "lanes": ["中路"],
-                "meta_score": 7.8,
-                "tier": "A-",
-                "tags": ["团控", "分割战场", "守线", "法伤"],
-                "difficulty": "中",
-                "situational": False,
-            },
-            "后羿": {
-                "lanes": ["发育路"],
-                "meta_score": 7.0,
-                "tier": "B+",
-                "tags": ["持续物伤", "站桩射手"],
-                "difficulty": "低",
-                "situational": True,
-            },
-            "庄周": {
-                "lanes": ["游走"],
-                "meta_score": 7.5,
-                "tier": "A-",
-                "tags": ["解控", "反控制", "保护"],
-                "difficulty": "低",
-                "situational": True,
-            },
-        },
-    },
-    "matchups.json": {
-        "updated_at": "replace-me",
-        "principles": [
-            "克制优先看机制，而不是只看版本强度。",
-            "用户熟练度不足时，不因版本强就硬选。",
-        ],
-        "enemy_tags_to_counters": {
-            "高机动": ["张良", "王昭君", "甄姬"],
-            "多突进": ["张良", "王昭君", "甄姬", "庄周"],
-            "多控制": ["庄周"],
-            "回血续航": ["梦魇之牙", "制裁之刃"],
-            "多前排": ["吕布", "貂蝉", "马可波罗"],
-        },
-        "hero_specific": {},
-        "team_needs_to_heroes": {
-            "法伤": ["甄姬", "张良", "王昭君"],
-            "保护射手": ["庄周"],
-            "持续物伤": ["后羿"],
-        },
-    },
-    "builds.json": {
-        "updated_at": "replace-me",
-        "disclaimer": "Builds are templates and should be adjusted by enemy composition.",
-        "common_adjustments": {
-            "anti_heal_magic": "敌方高回复：法师或辅助补梦魇之牙。",
-            "anti_heal_physical": "物理位面对高回复：补制裁之刃。",
-            "need_cleanse": "敌方强控多时，射手/法刺可考虑净化。",
-        },
-        "heroes": {
-            "甄姬": {
-                "summoner_spells": ["闪现"],
-                "runes": "梦魇、心眼、狩猎/调和。",
-                "core_build": ["冷静之靴", "痛苦面具", "凝冰之息", "日暮之流", "博学者之怒", "虚无法杖"],
-                "situational": ["辉月保命", "梦魇之牙制裁回血"],
-                "playstyle": "先清线再支援，团战站后排打反手控制。",
-            },
-            "张良": {
-                "summoner_spells": ["闪现"],
-                "runes": "梦魇、心眼、狩猎/调和。",
-                "core_build": ["疾步之靴/冷静之靴", "痛苦面具", "凝冰之息", "日暮之流", "辉月", "虚无法杖"],
-                "situational": ["梦魇之牙", "炽热支配者保命"],
-                "playstyle": "按住敌方最肥或最高机动核心。",
-            },
-            "王昭君": {
-                "summoner_spells": ["闪现"],
-                "runes": "梦魇、心眼、狩猎/调和。",
-                "core_build": ["冷静之靴", "痛苦面具", "凝冰之息", "日暮之流", "博学者之怒", "虚无法杖"],
-                "situational": ["梦魇之牙", "辉月"],
-                "playstyle": "用二技能封路和反手，大招分割战场。",
-            },
-        },
-    },
-    "sources.json": {
-        "updated_at": "replace-me",
-        "sources": [],
-        "notes": [
-            "Add official patch notes, community tier lists, screenshots, and personal match feedback here.",
-            "This file explains where meta and matchup assumptions come from.",
-        ],
-    },
-}
-
 LEGACY_FILE_NAMES = {
     "hero_pool.json": "my_hero_pool.json",
     "sources.json": "version_sources.json",
 }
 
+RUNTIME_FILE_NAMES = [
+    "hero_pool.json",
+    "meta.json",
+    "matchups.json",
+    "builds.json",
+    "sources.json",
+    "feedback.jsonl",
+]
 
-def write_json(path: Path, data: dict[str, Any]) -> None:
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+def copy_template_file(file_name: str, overwrite: bool) -> Path | None:
+    source_path = TEMPLATE_DATA_ROOT / file_name
+    target_path = DATA_ROOT / file_name
+    if not source_path.exists():
+        raise FileNotFoundError(f"missing template file: {source_path}")
+    if target_path.exists() and not overwrite:
+        return None
+    if file_name.endswith(".jsonl"):
+        target_path.write_text(source_path.read_text(encoding="utf-8"), encoding="utf-8")
+    else:
+        data = json.loads(source_path.read_text(encoding="utf-8"))
+        target_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return target_path
 
 
 def init_data(overwrite: bool = False) -> list[Path]:
     DATA_ROOT.mkdir(parents=True, exist_ok=True)
     written: list[Path] = []
-    for file_name, content in DEFAULT_JSON_FILES.items():
-        path = DATA_ROOT / file_name
-        if overwrite or not path.exists():
-            write_json(path, content)
+    for file_name in RUNTIME_FILE_NAMES:
+        path = copy_template_file(file_name, overwrite=overwrite)
+        if path is not None:
             written.append(path)
-    feedback_path = DATA_ROOT / "feedback.jsonl"
-    if overwrite or not feedback_path.exists():
-        feedback_path.write_text("", encoding="utf-8")
-        written.append(feedback_path)
     return written
 
 
@@ -192,6 +86,7 @@ def load_json(name: str) -> dict[str, Any]:
             path = legacy_path
     if not path.exists():
         init_data(overwrite=False)
+        path = DATA_ROOT / name
     return json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -227,13 +122,14 @@ def personal_score(statistics_by_hero: dict[str, dict[str, Any]], hero: str) -> 
     return score, note
 
 
-def infer_enemy_tags(enemy_heroes: list[str]) -> set[str]:
+def infer_enemy_tags(enemy_heroes: list[str], matchups: dict[str, Any]) -> set[str]:
     tags: set[str] = set()
     high_mobility_names = {"镜", "澜", "露娜", "韩信", "马超", "关羽", "不知火舞", "司马懿", "上官婉儿", "孙悟空", "阿轲", "兰陵王"}
     projectile_names = {"嬴政", "干将莫邪", "百里守约", "虞姬", "后羿", "伽罗", "小乔", "墨子", "鲁班七号"}
     control_names = {"王昭君", "甄姬", "墨子", "白起", "牛魔", "廉颇", "张飞", "东皇太一", "张良"}
     sustain_names = {"蔡文姬", "程咬金", "桑启", "扁鹊", "猪八戒"}
     tank_names = {"项羽", "廉颇", "张飞", "牛魔", "白起", "程咬金", "猪八戒"}
+    hero_specific = matchups.get("hero_specific", {})
     for hero in enemy_heroes:
         if hero in high_mobility_names:
             tags.update(["高机动", "多突进"])
@@ -245,6 +141,8 @@ def infer_enemy_tags(enemy_heroes: list[str]) -> set[str]:
             tags.add("回血续航")
         if hero in tank_names:
             tags.add("多前排")
+        if hero in hero_specific.get("后羿", {}).get("bad_against", []):
+            tags.add("多突进")
     if len(enemy_heroes) >= 3 and len(tags) == 0:
         tags.add("未知威胁")
     return tags
@@ -260,7 +158,7 @@ def recommend(lane: str, ally_text: str, enemy_text: str, top_k: int) -> list[di
     owned_heroes = set(personal.get("owned_heroes", []))
     statistics_by_hero = {item["hero"]: item for item in personal.get("match_statistics", [])}
     enemy_heroes = split_heroes(enemy_text)
-    enemy_tags = infer_enemy_tags(enemy_heroes)
+    enemy_tags = infer_enemy_tags(enemy_heroes, matchups)
     counter_heroes = set()
     for tag in enemy_tags:
         counter_heroes.update(matchups.get("enemy_tags_to_counters", {}).get(tag, []))
@@ -300,7 +198,7 @@ def recommend(lane: str, ally_text: str, enemy_text: str, top_k: int) -> list[di
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Honor of Kings draft recommendation assistant")
-    parser.add_argument("--init-data", action="store_true", help="generate local data files and exit")
+    parser.add_argument("--init-data", action="store_true", help="generate local data files from templates and exit")
     parser.add_argument("--overwrite-data", action="store_true", help="overwrite generated data files; use carefully")
     parser.add_argument("--lane", default="", help="目标分路：中路/发育路/游走/对抗路/打野")
     parser.add_argument("--ally", default="", help="我方已选英雄，逗号分隔")
