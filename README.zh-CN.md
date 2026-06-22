@@ -130,10 +130,6 @@ python3 scripts/recommend.py --init-data
 
 你也可以不通过 Agent，直接使用命令行脚本。
 
-## 相关文章
-
-- [我用 Agent 打王者后，居然没怎么输过了](https://zhuanlan.zhihu.com/p/2052139141006151933)：这篇文章记录了我为什么做这个 skill，以及一个游戏辅助 skill 如何体现个人 Agent 系统的价值。
-
 ## License
 
 MIT License.

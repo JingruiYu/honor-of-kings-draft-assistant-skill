@@ -130,10 +130,6 @@ Clone this repository into an Agent skills directory that supports `SKILL.md`. T
 
 The CLI can also be used directly without an Agent.
 
-## Related article
-
-- [我用 Agent 打王者后，居然没怎么输过了](https://zhuanlan.zhihu.com/p/2052139141006151933) — a Chinese write-up about why I built this skill and how a small game-assistant skill reflects the broader value of personal Agent systems.
-
 ## License
 
 MIT License.
