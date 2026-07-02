@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-19",
+  "updated_at": "2026-06-25",
   "version_label": "当前版本预置 MVP（搜索片段 + 机制常识，待用户截图/榜单校准）",
   "score_scale": "1-10，越高越适合作为默认推荐；situational 表示吃阵容。",
   "heroes": {
@@ -575,6 +575,26 @@
       ],
       "difficulty": "高",
       "situational": true
+    },
+    "六耳": {
+      "lanes": [
+        "打野",
+        "对抗路"
+      ],
+      "meta_score": 7.6,
+      "tier": "A-",
+      "tags": [
+        "刺客",
+        "战士",
+        "高机动",
+        "切后",
+        "分身",
+        "物伤",
+        "野核"
+      ],
+      "difficulty": "中",
+      "situational": false,
+      "note": "2026 新英雄；基于搜索片段暂定：刺客/战士，推荐打野/对抗路，后续用实战和榜单校准。"
     }
   }
 }
